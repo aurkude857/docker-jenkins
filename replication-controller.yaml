@@ -1,0 +1,17 @@
+#Replicaiton controller                                                                                                                                             
+apiVersion: v1
+kind: ReplicationController
+metadata:
+ name: rc-production-pods
+spec:
+ replicas: 5 #number of pods needed
+ template: #pod specification
+  metadata:
+   name: web  #pod name
+   labels:    #pod label
+    dep: production
+  spec:
+   containers: #container properties
+   - name: c1
+     image: quay.io/gauravkumar9130/mywebapp
+     imagePullPolicy: IfNotPresent
